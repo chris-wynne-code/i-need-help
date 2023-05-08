@@ -1,0 +1,139 @@
+html {
+    box-sizing: border-box;
+  } 
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    position: absolute;
+    background-image: url('./images/background-image.png');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+.doors {
+  cursor: pointer;
+  height: 550px;
+  position: relative;
+  width: 100%;
+}
+
+.doors::before {
+  background-image: url("./images/beach.png");
+  background-size: auto 550px;
+  background-position: center center;
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition-delay: .5s;
+  transition-duration: 1.5s;
+  transition-property: opacity;
+  width: 100%;
+}
+
+.doors.open {
+  cursor: default;
+}
+
+.doors.open::before {
+  opacity: 1;
+}
+
+.doors .door {
+  background-image: url("./images/door.png");
+  display: inline-block;
+  height: 100%;
+  width: 254px;
+  background-size: cover;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: transitionX(0);
+  transition: left 2s, right 2s;
+}
+
+.doors .door.left {
+  left: calc(50% - 254px);
+}
+
+.doors .door.right {
+  right: calc(50% - 254px);
+}
+
+.doors.open .door.left {
+  left: 0%;
+}
+
+.doors.open .door.right {
+  right: 0%;
+}
+
+.doors .button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%);
+  visibility: hidden;
+}
+
+.doors.open .button {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 2s;
+  transition-duration: .5s;
+  transition-property: opacity, visibility;
+}
+
+/* .doors .slide-window {
+  background-image: url("./images/slide-window.png");
+  width: 190.5px;
+  height: 99px;
+  display: inline-block;
+  position: absolute;
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  left: 50%;
+  top: 100%;
+  background-size: cover;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.doors.open .slide-window {
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 2s;
+  transition-duration: .5s;
+  transition-property: opacity, visibility;
+} */
+
+.modal {
+  background-color: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+  width: 100vw;
+}
+
+.modal.open {
+  opacity: 1;
+  visibility: visible;
+  transition-duration: .5s;
+  transition-property: opacity, visibility;
+}
